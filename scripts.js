@@ -1,11 +1,31 @@
 
 //initialising Uk map
-var map = L.map('mapContainer').setView([54.5,-3], 6); //Centered on UK
+var map = L.map('mapContainer', {
+    center: [54.7, -2], // Center on Great Britain
+    zoom: 3, // Set initial zoom level
+    minZoom: 6, // Prevent zooming out too much
+    maxZoom: 10, // Prevent zooming in
+    zoomControl: false, // Disable zoom controls
+    dragging: false, // Disable dragging
+    scrollWheelZoom: false, // Disable zooming with the mouse wheel
+    doubleClickZoom: false, // Disable zooming by double-click
+    touchZoom: false // Disable zooming on touchscreens
+});
+
+// Restrict to Great Britain (approximate bounding box)
+var gbBounds = [
+    [100, -10],  // Top-left (NW Scotland)
+    [40, 1.8]    // Bottom-right (SE England)
+];
+
+map.setMaxBounds(gbBounds);
 
 //Add a tile layer (background map)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+var blackMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd'
+});
+blackMap.addTo(map);
 
 fetch('data/uk_boundaries.json')
 .then(response => response.json())
@@ -13,7 +33,7 @@ fetch('data/uk_boundaries.json')
     L.geoJson(data, {
         style: function(feature) {
             return {
-                fillColor: "#ff7800",  // Placeholder color
+                fillColor: "#36454F",  // Placeholder color
                 weight: 1,
                 opacity: 1,
                 color: "white",
