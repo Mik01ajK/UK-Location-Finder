@@ -1,3 +1,4 @@
+//Creating table for the job roles
 
 //initialising Uk map
 var map = L.map('mapContainer', {
