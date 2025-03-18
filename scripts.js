@@ -1,4 +1,12 @@
-//Creating table for the job roles
+//Main div container for job roles
+//Creating option selector for the job roles
+// two fields for average salary and maximum house price which will be calculated using a formula
+// Finally a table that populatrs with 5 top areas based on average house price for the salary.
+
+
+
+
+
 
 //initialising Uk map
 var map = L.map('mapContainer', {

@@ -1,3 +1,9 @@
+body{
+    background-color: #090240;
+}
+#hello{
+    color: white;
+}
 #mapContainer {
     width: 455px;
     height: 800px;
