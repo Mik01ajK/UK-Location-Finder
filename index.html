@@ -17,6 +17,7 @@
     <main>
         <div id="mainContainer">
             <div id="jobRoleContainer">
+            <label id="jbRole">Select your job role...</label>
             <select id="jobRoleSelector">
                 <option value="0">Select a job role</option>
                 <option value="1">Software Developer</option>
@@ -66,27 +67,60 @@
             <div id="salaryContainer">
             <div id="dualCont">
                 <div id="averageSal">
-                    <label for="averageSalaryInput">Average Salary:</label>
-                    <input type="number" id="averageSalaryInput" name="averageSalaryInput" placeholder="Enter Average salary">
+                    <label class="lblPrice" for="averageSalaryInput">Average Salary:</label>
+                    <input type="number" id="averageSalaryInput" name="averageSalaryInput" >
 
                 </div>
                 <div id="maxHousePrice">
-
+                    <label class="lblPrice" for="maxHousePriceInput">Maximum House Price:</label>
+                    <input type="number" id="maxHousePriceInput" name="maxHousePriceInput" readonly>
                 </div>
 
             </div>
             </div>
         
             <div id="housePriceContainer">
+                <table id="housePriceTable" >
+                    <thead>
+                        <tr>
+                            <th class="thText">Area</th>
+                            <th class="thText">Average Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be dynamically inserted here -->
+                        <tr>
+                            <td>Kensington and Chelsea</td>
+                            <td>1,070,326</td>
+                        </tr>
+                        <tr>
+                            <td>City of Westminster</td>
+                            <td>868,377</td>
+                        </tr>
+                        <tr>
+                            <td>Camden</td>
+                            <td>830,814</td>
+                        </tr>
+                        <tr>
+                            <td>City of London</td>
+                            <td>792,499</td>
+                        </tr>
+                        <tr>
+                            <td>Richmond upon Thames</td>
+                            <td>765,293</td>
+                        </tr>
+                    </tbody>
+                </table>
             
             </div>
         
         </div>
         <section id="ukMap">
-            <div id="mapContainer"></div>
             <h2>Uk Map</h2>
+            <div id="mapContainer"></div>
+            
         </section>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+
     </main>
     <script src="scripts.js"></script>
 </body>

@@ -4,8 +4,92 @@ body{
 #hello{
     color: white;
 }
+
+/* Center the main container */
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#jbRole, #jobRoleSelector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lblPrice{
+    color: white;
+}
+
+/* Style the job role selector */
+#jobRoleContainer {
+    margin-bottom: 20px;
+}
+
+#jbRole {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Arrange salary side by side */
+#dualCont {
+    display:flex;
+    gap:20px;
+}
+
+/* Style individual salary input containers */
+#averageSal, #maxHousePrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the house price table */
+#housePriceTable {
+    width: 100%;
+    border-collapse: separate; /* Ensure separate borders */
+    margin-top: 20px;
+    border: solid 2px white;
+    border-radius: 10px; /* Add border-radius */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+#housePriceTable th, #housePriceTable td {
+    padding: 8px;
+    text-align: left;
+    color: white;
+    border: none; /* Remove internal borders */
+}
+
+#housePriceTable th {
+    background-color: #04BD88;
+    color: white;
+    margin: 0; /* Remove margin */
+    padding: 10px; /* Adjust padding */
+}
+
+#housePriceTable thead th:first-child {
+    border-top-left-radius: 10px; /* Round top-left corner */
+}
+
+#housePriceTable thead th:last-child {
+    border-top-right-radius: 10px; /* Round top-right corner */
+}
+
+#ukMap {
+    color: white;
+}
 #mapContainer {
     width: 455px;
     height: 800px;
     margin: 0 auto;
 }
+
+.leaflet-container {
+    background: none !important;
+}
+
