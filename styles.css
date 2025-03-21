@@ -126,6 +126,7 @@ body{
 
 #ukMap {
     color: white;
+    margin: 0 auto;
 }
 #mapContainer {
     width: 455px;
