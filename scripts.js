@@ -14,11 +14,8 @@ var map = L.map('mapContainer', {
     zoom: 3, // Set initial zoom level
     minZoom: 6, // Prevent zooming out too much
     maxZoom: 10, // Prevent zooming in
-    zoomControl: false, // Disable zoom controls
-    dragging: false, // Disable dragging
-    scrollWheelZoom: false, // Disable zooming with the mouse wheel
-    doubleClickZoom: false, // Disable zooming by double-click
-    touchZoom: false // Disable zooming on touchscreens
+
+
 });
 
 // Restrict to Great Britain (approximate bounding box)
@@ -37,18 +34,82 @@ var blackMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{
 });
 blackMap.addTo(map);
 
-fetch('data/uk_boundaries.json')
-.then(response => response.json())
-.then(data => {
-    L.geoJson(data, {
-        style: function(feature) {
-            return {
-                fillColor: "#36454F",  // Placeholder color
-                weight: 1,
-                opacity: 1,
-                color: "white",
-                fillOpacity: 0.7
-            };
-        }
-    }).addTo(map);
-});
+fetch('data/uk-boundaries.geojson')
+    .then(response => response.json())
+    .then(data => {
+        // Create the GeoJSON layer and assign it to the geojson variable
+        geojson = L.geoJson(data, {
+            style: function(feature) {
+                return {
+                    fillColor: getColor(feature.properties.price), // Use the price property
+                    weight: 1,
+                    opacity: 1,
+                    color: "white",
+                    fillOpacity: 0.7
+                };
+            },
+            onEachFeature: onEachFeature // Add interaction listeners
+        }).addTo(map);
+    })
+    .catch(error => console.error('Error loading GeoJSON:', error));
+
+// Function to assign a colour based on the price
+function getColor(d) {
+    return d > 1000000 ? '#800026' :
+           d > 750000  ? '#BD0026' :
+           d > 500000  ? '#E31A1C' :
+           d > 250000  ? '#FC4E2A' :
+           d > 100000  ? '#FD8D3C' :
+           d > 50000   ? '#FEB24C' :
+           d > 25000   ? '#FED976' :
+                        '#FFEDA0';
+}
+
+// Highlight feature on mouseover
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 2,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    layer.bringToFront();
+
+    info.update(layer.feature.properties);
+}
+
+// Reset highlight on mouseout
+function resetHighlight(e) {
+    geojson.resetStyle(e.target); // Use the geojson layer to reset style
+    info.update(); // Clear the info box
+}
+
+
+// Add interaction listeners to each feature
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight
+    });
+}
+
+// Creating pop up
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+
+//method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>UK House Prices</h4>' +  (props ?
+        '<b>' + props['LAD13NM'] + '</b><br />' + ' £' + props.price
+        : 'Hover over a region');
+};
+
+info.addTo(map);
