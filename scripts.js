@@ -114,7 +114,18 @@ info.update = function (props) {
 
 info.addTo(map);
 
-//Need arron to send json file with jobs and the average salary for the job.
+
+
 // connect the salary input fields to the maximum house price
+function maxHouse () {
+    const salary = document.getElementById('averageSalaryInput').value;
+    const maxHousePrice = salary * 4.5; // 4.5x salary multiplier for house price
+    document.getElementById('maxHousePriceInput').value = maxHousePrice || 0;
+}
+
+document.getElementById('averageSalaryInput').addEventListener('input', maxHouse )
+maxHouse(); 
+
+//Need arron to send json file with jobs and the average salary for the job.
 //Using maximum house price have the map dynamically change colour.
 //use the maximum house price to dynamically fill the top houses table.
