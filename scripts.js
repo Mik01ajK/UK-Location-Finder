@@ -12,7 +12,7 @@
 var map = L.map('mapContainer', {
     center: [54.7, -2], // Center on Great Britain
     zoom: 3, // Set initial zoom level
-    minZoom: 6, // Prevent zooming out too much
+    minZoom: 5.5, // Prevent zooming out too much
     maxZoom: 10, // Prevent zooming in
 
 
@@ -93,8 +93,6 @@ function updateMapColors() {
 
 // Highlight feature on mouseover
 function highlightFeature(e) {
-    if (!isMapReady) return; // Do nothing if the map is not ready
-
     var layer = e.target;
 
     layer.setStyle({
@@ -111,14 +109,10 @@ function highlightFeature(e) {
 
 // Reset highlight on mouseout
 function resetHighlight(e) {
-    if (!isMapReady) return; // Do nothing if the map is not ready
-
     const layer = e.target;
-    const maxHousePrice = parseFloat(document.getElementById('maxHousePriceInput').value) || 0;
 
     // Reset the style using the current maxHousePrice
     layer.setStyle({
-        fillColor: getColor(layer.feature.properties.price, maxHousePrice), // Use maxHousePrice
         weight: 1,
         opacity: 1,
         color: "white",

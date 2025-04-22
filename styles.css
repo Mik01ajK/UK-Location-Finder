@@ -130,12 +130,15 @@ body{
 }
 #mapContainer {
     width: 455px;
-    height: 800px;
+    height: 740px;
     margin: 0 auto;
 }
 
 .leaflet-container {
     background: none !important;
+}
+.leaflet-top .leaflet-control {
+    margin-top: 50px !important;
 }
 
 .info {
