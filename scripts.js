@@ -174,6 +174,6 @@ function calculateAndUpdateMap() {
 // Add an event listener to the "Calculate" button
 document.getElementById('calculateButton').addEventListener('click', calculateAndUpdateMap);
 
-//Need arron to send json file with jobs and the average salary for the job.
 
+//Need arron to send json file with jobs and the average salary for the job.
 //use the maximum house price to dynamically fill the top houses table.
