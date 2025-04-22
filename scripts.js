@@ -53,20 +53,48 @@ fetch('data/uk-boundaries.geojson')
     })
     .catch(error => console.error('Error loading GeoJSON:', error));
 
-// Function to assign a colour based on the price
-function getColor(d) {
-    return d > 1000000 ? '#800026' :
-           d > 750000  ? '#BD0026' :
-           d > 500000  ? '#E31A1C' :
-           d > 250000  ? '#FC4E2A' :
-           d > 100000  ? '#FD8D3C' :
-           d > 50000   ? '#FEB24C' :
-           d > 25000   ? '#FED976' :
-                        '#FFEDA0';
+// Function to assign a colour based on the price and max house price
+function getColor(d, maxHousePrice) {
+    if (d > maxHousePrice * 1.5) {
+        return '#ff0000'; // Bright red (significantly above max house price)
+    } else if (d > maxHousePrice * 1.35) {
+        return '#ff5733'; // Light red-orange (moderately above max house price)
+    } else if (d > maxHousePrice * 1.2) {
+        return '#ff8c1a'; // Orange (slightly above max house price)
+    } else if (d > maxHousePrice) {
+        return '#ffd633'; // Yellow-orange (just above max house price)
+    } else if (d === maxHousePrice) {
+        return '#80ff80'; // Green (exactly at max house price)
+    } else {
+        return '#33cc33'; // Dark green (below max house price)
+    }
 }
+
+let isMapReady = false; // Flag to track if the map is ready
+
+// Function to update the map colors dynamically
+function updateMapColors() {
+    const maxHousePrice = parseFloat(document.getElementById('maxHousePriceInput').value) || 0;
+
+    //Update the GeoJSOn layer's style
+    geojson.setStyle(function(feature) {
+        return {
+            fillColor: getColor(feature.properties.price, maxHousePrice), // Use maxHousePrice
+            weight: 1,
+            opacity: 1,
+            color: "white",
+            fillOpacity: 0.7
+        };
+    });
+}
+
+
+
 
 // Highlight feature on mouseover
 function highlightFeature(e) {
+    if (!isMapReady) return; // Do nothing if the map is not ready
+
     var layer = e.target;
 
     layer.setStyle({
@@ -83,7 +111,20 @@ function highlightFeature(e) {
 
 // Reset highlight on mouseout
 function resetHighlight(e) {
-    geojson.resetStyle(e.target); // Use the geojson layer to reset style
+    if (!isMapReady) return; // Do nothing if the map is not ready
+
+    const layer = e.target;
+    const maxHousePrice = parseFloat(document.getElementById('maxHousePriceInput').value) || 0;
+
+    // Reset the style using the current maxHousePrice
+    layer.setStyle({
+        fillColor: getColor(layer.feature.properties.price, maxHousePrice), // Use maxHousePrice
+        weight: 1,
+        opacity: 1,
+        color: "white",
+        fillOpacity: 0.7
+    });
+
     info.update(); // Clear the info box
 }
 
@@ -116,16 +157,23 @@ info.addTo(map);
 
 
 
-// connect the salary input fields to the maximum house price
-function maxHouse () {
-    const salary = document.getElementById('averageSalaryInput').value;
-    const maxHousePrice = salary * 4.5; // 4.5x salary multiplier for house price
-    document.getElementById('maxHousePriceInput').value = maxHousePrice || 0;
+// Function to calculate max house price
+function maxHouse() {
+    const salary = parseFloat(document.getElementById('averageSalaryInput').value) || 0;
+    const maxHousePrice = salary * 4.5; 
+    document.getElementById('maxHousePriceInput').value = maxHousePrice.toFixed(2) || 0;
 }
 
-document.getElementById('averageSalaryInput').addEventListener('input', maxHouse )
-maxHouse(); 
+//Using maximum house price have the map dynamically change colour.
+function calculateAndUpdateMap() {
+    maxHouse(); // Calculate the max house price
+    updateMapColors(); 
+    isMapReady = true; // Enable map interactions
+}
+
+// Add an event listener to the "Calculate" button
+document.getElementById('calculateButton').addEventListener('click', calculateAndUpdateMap);
 
 //Need arron to send json file with jobs and the average salary for the job.
-//Using maximum house price have the map dynamically change colour.
+
 //use the maximum house price to dynamically fill the top houses table.
