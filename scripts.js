@@ -39,7 +39,7 @@ fetch('data/uk-boundaries.geojson')
     .then(data => {
         // Create the GeoJSON layer and assign it to the geojson variable
         geojson = L.geoJson(data, {
-            style: function(feature) {
+            style: function (feature) {
                 return {
                     fillColor: getColor(feature.properties.price), // Use the price property
                     weight: 1,
@@ -77,7 +77,7 @@ function updateMapColors() {
     const maxHousePrice = parseFloat(document.getElementById('maxHousePriceInput').value) || 0;
 
     //Update the GeoJSOn layer's style
-    geojson.setStyle(function(feature) {
+    geojson.setStyle(function (feature) {
         return {
             fillColor: getColor(feature.properties.price, maxHousePrice), // Use maxHousePrice
             weight: 1,
@@ -142,7 +142,7 @@ info.onAdd = function (map) {
 
 //method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = '<h4>UK House Prices</h4>' +  (props ?
+    this._div.innerHTML = '<h4>UK House Prices</h4>' + (props ?
         '<b>' + props['LAD13NM'] + '</b><br />' + ' £' + props.price
         : 'Hover over a region');
 };
@@ -154,14 +154,18 @@ info.addTo(map);
 // Function to calculate max house price
 function maxHouse() {
     const salary = parseFloat(document.getElementById('averageSalaryInput').value) || 0;
-    const maxHousePrice = salary * 4.5; 
+    const maxHousePrice = salary * 4.5;
     document.getElementById('maxHousePriceInput').value = maxHousePrice.toFixed(2) || 0;
 }
 
 //Using maximum house price have the map dynamically change colour.
 function calculateAndUpdateMap() {
     maxHouse(); // Calculate the max house price
-    updateMapColors(); 
+    const maxHousePrice = parseFloat(document.getElementById('maxHousePriceInput').value) || 0;
+    console.log("Max House Price:", maxHousePrice); // Debugging
+
+    updateMapColors(); // Update map colors
+    updateTable(maxHousePrice); // Update the table
     isMapReady = true; // Enable map interactions
 }
 
@@ -171,3 +175,48 @@ document.getElementById('calculateButton').addEventListener('click', calculateAn
 
 //Need arron to send json file with jobs and the average salary for the job.
 //use the maximum house price to dynamically fill the top houses table.
+
+function updateTable(maxHousePrice) {
+    const tableBody = document.querySelector("#housePriceTable tbody");
+
+    // Clear the existing table rows
+    tableBody.innerHTML = "";
+
+    // Filter areas based on max house price
+    const filteredAreas = geojson.toGeoJSON().features
+        .map(feature => {
+            const price = parseFloat(feature.properties.price); // Parse price as a number
+            const difference = Math.abs(price - maxHousePrice); // Calculate the absolute difference
+            return { ...feature, difference }; // Add the difference to the feature object
+        })
+        .sort((a, b) => a.difference - b.difference) // Sort by the absolute difference
+        .slice(0, 5); // Limit to top 5 areas
+
+
+    filteredAreas.forEach(feature => {
+        const row = document.createElement("tr");
+        const areaCell = document.createElement("td");
+        const priceCell = document.createElement("td");
+
+        areaCell.textContent = feature.properties["LAD13NM"]; // Use the area name
+        priceCell.textContent = parseFloat(feature.properties.price).toLocaleString(); // Format price with commas
+
+        row.appendChild(areaCell);
+        row.appendChild(priceCell);
+        tableBody.appendChild(row);
+    });
+
+     // Populate the table with filtered data if no areas are found
+     if (filteredAreas.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 2;
+        cell.textContent = "No areas found within the maximum house price.";
+        cell.style.textAlign = "center";
+        row.appendChild(cell);
+        tableBody.appendChild(row);
+        return;
+    }
+
+
+}
