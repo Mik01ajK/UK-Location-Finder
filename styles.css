@@ -87,6 +87,31 @@ body{
 }
 
 /* Style individual salary input containers */
+
+#maxHousePriceInput {
+    background-color: #090240;
+    border: 0;
+    color: white; 
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Style for the Average Salary input */
+#averageSalaryInput {
+    background-color: rgba(255, 255, 255, 0.1); /* subtle contrast */
+    color: white;
+    border: 2px solid #4fd1a1; /* matches the green dropdown */
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    outline: none;
+    width: 100px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+
+
 #averageSal, #maxHousePrice {
     display: flex;
     flex-direction: column;
