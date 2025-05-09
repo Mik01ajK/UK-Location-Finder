@@ -110,7 +110,19 @@ body{
     transition: border-color 0.3s ease;
 }
 
+#calculateButton {
+    padding: 10px 55px;
+    border-radius: 7px;
+    background-color: #04BD88;
+    color: white;
+    margin-top: 21px;
+    border-color: antiquewhite;
+    font-weight: 600;
+}
 
+button#calculateButton:hover {
+    background-color: #090240;
+}
 
 #averageSal, #maxHousePrice {
     display: flex;
