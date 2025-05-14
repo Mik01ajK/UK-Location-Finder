@@ -218,5 +218,15 @@ function updateTable(maxHousePrice) {
         return;
     }
 
-
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const jobRoleSelector = document.getElementById("jobRoleSelector");
+    const averageSalaryInput = document.getElementById("averageSalaryInput");
+
+    jobRoleSelector.addEventListener("change", () => {
+        const selectedOption = jobRoleSelector.options[jobRoleSelector.selectedIndex];
+        const salary = selectedOption.getAttribute("data-salary");
+        averageSalaryInput.value = salary || ""; // Set salary or clear if no value
+    });
+});

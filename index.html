@@ -6,91 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
     <header>
         <div id="bannerContainer">
             <div id="imgCont">
-                <img src="https://media.licdn.com/dms/image/v2/D4E0BAQEHR_0shpqYEA/company-logo_200_200/company-logo_200_200/0/1715074037909/fabric_analytics_logo?e=2147483647&amp;v=beta&amp;t=5eI7hCnppZGiAN5YLtUx06rEmsWvyASqMKuyiF0lUmc" alt="fabric Icon" id="fabricIcon">
+                <img src="https://media.licdn.com/dms/image/v2/D4E0BAQEHR_0shpqYEA/company-logo_200_200/company-logo_200_200/0/1715074037909/fabric_analytics_logo?e=2147483647&amp;v=beta&amp;t=5eI7hCnppZGiAN5YLtUx06rEmsWvyASqMKuyiF0lUmc"
+                    alt="fabric Icon" id="fabricIcon">
             </div>
             <div id="titleCont">
                 <h1 id="topBanner">House affordability Finder</h1>
             </div>
         </div>
-        
+
     </header>
     <main>
         <div id="mainContainer">
             <div id="jobRoleContainer">
-            <label id="jbRole">Select your job role...</label>
-            <select id="jobRoleSelector">
-                <option value="0">Select a job role</option>
-                <option value="1">Software Developer</option>
-                <option value="2">Data Analyst</option>
-                <option value="3">Project Manager</option>
-                <option value="4">Business Analyst</option>
-                <option value="5">Data Scientist</option>
-                <option value="6">Product Manager</option>
-                <option value="7">UX Designer</option>
-                <option value="8">UI Designer</option>
-                <option value="9">DevOps Engineer</option>
-                <option value="10">QA Engineer</option>
-                <option value="11">Cyber Security Analyst</option>
-                <option value="12">Network Engineer</option>
-                <option value="13">IT Support</option>
-                <option value="14">Systems Administrator</option>
-                <option value="15">Database Administrator</option>
-                <option value="16">Cloud Engineer</option>
-                <option value="17">Machine Learning Engineer</option>
-                <option value="18">AI Engineer</option>
-                <option value="19">Robotics Engineer</option>
-                <option value="20">Game Developer</option>
-                <option value="21">Web Developer</option>
-                <option value="22">Mobile Developer</option>
-                <option value="23">Embedded Systems Engineer</option>
-                <option value="24">Hardware Engineer</option>
-                <option value="25">Firmware Engineer</option>
-                <option value="26">Electrical Engineer</option>
-                <option value="27">Mechanical Engineer</option>
-                <option value="28">Civil Engineer</option>
-                <option value="29">Structural Engineer</option>
-                <option value="30">Chemical Engineer</option>
-                <option value="31">Biomedical Engineer</option>
-                <option value="32">Aerospace Engineer</option>
-                <option value="33">Automotive Engineer</option>
-                <option value="34">Manufacturing Engineer</option>
-                <option value="35">Production Engineer</option>
-                <option value="36">Process Engineer</option>
-                <option value="37">Quality Engineer</option>
-                <option value="38">Health and Safety Engineer</option>
-                <option value="39">Environmental Engineer</option>
-                </select>
-        
-        
-            </div>
-        
+                <label id="jbRole">Select your job role...</label>
+                <select id="jobRoleSelector">
+                    <option value="0" data-salary="0">Select a job role</option>
+                    <option value="1" data-salary="50000">Software Developer</option>
+                    <option value="2" data-salary="40000">Data Analyst</option>
+                    <option value="3" data-salary="60000">Project Manager</option>
+                    <option value="4" data-salary="45000">Business Analyst</option>
+                    <option value="5" data-salary="65000">Data Scientist</option>
+                    <option value="6" data-salary="55000">Product Manager</option>
+                    <option value="7" data-salary="40000">UX Designer</option>
+                    <option value="8" data-salary="38000">UI Designer</option>
+                    <option value="9" data-salary="55000">DevOps Engineer</option>
+                    <option value="10" data-salary="35000">QA Engineer</option>
+                    <option value="11" data-salary="50000">Cyber Security Analyst</option>
+                    <option value="12" data-salary="45000">Network Engineer</option>
+                    <option value="13" data-salary="30000">IT Support</option>
+                    <option value="14" data-salary="40000">Systems Administrator</option>
+                    <option value="15" data-salary="45000">Database Administrator</option>
+                    <option value="16" data-salary="60000">Cloud Engineer</option>
+                    <option value="17" data-salary="70000">Machine Learning Engineer</option>
+                    <option value="18" data-salary="75000">AI Engineer</option>
+                    <option value="19" data-salary="65000">Robotics Engineer</option>
+                    <option value="20" data-salary="40000">Game Developer</option>
+                    <option value="21" data-salary="35000">Web Developer</option>
+                    <option value="22" data-salary="40000">Mobile Developer</option>
+                    <option value="23" data-salary="50000">Embedded Systems Engineer</option>
+                    <option value="24" data-salary="45000">Hardware Engineer</option>
+                    <option value="25" data-salary="42000">Firmware Engineer</option>
+                    <option value="26" data-salary="40000">Electrical Engineer</option>
+                    <option value="27" data-salary="38000">Mechanical Engineer</option>
+                    <option value="28" data-salary="35000">Civil Engineer</option>
+                    <option value="29" data-salary="40000">Structural Engineer</option>
+                    <option value="30" data-salary="45000">Chemical Engineer</option>
+                </select> </div>
             <div id="salaryContainer">
-            <div id="dualCont">
-                <div id="averageSal">
-                    <label class="lblPrice" for="averageSalaryInput">Average Salary:</label>
-                    <input type="number" id="averageSalaryInput" name="averageSalaryInput" >
+                <div id="dualCont">
+                    <div id="averageSal">
+                        <label class="lblPrice" for="averageSalaryInput">Average Salary:</label>
+                        <input type="number" id="averageSalaryInput" name="averageSalaryInput">
+
+                    </div>
+                    <div id="maxHousePrice">
+                        <label class="lblPrice" for="maxHousePriceInput">Maximum House Price:</label>
+                        <input type="number" id="maxHousePriceInput" name="maxHousePriceInput" readonly>
+                    </div>
 
                 </div>
-                <div id="maxHousePrice">
-                    <label class="lblPrice" for="maxHousePriceInput">Maximum House Price:</label>
-                    <input type="number" id="maxHousePriceInput" name="maxHousePriceInput" readonly>
-                </div>
 
+                <button id="calculateButton">Calculate</button>
             </div>
 
-            <button id="calculateButton">Calculate</button>
-            </div>
-        
             <div id="housePriceContainer">
-                <table id="housePriceTable" >
+                <table id="housePriceTable">
                     <thead>
                         <tr>
                             <th class="thText">Area</th>
@@ -121,17 +111,17 @@
                         </tr>
                     </tbody>
                 </table>
-            
+
             </div>
 
             <section id="ukMap">
                 <h2>Uk Map</h2>
                 <div id="mapContainer"></div>
-                
+
             </section>
-        
+
         </div>
-        
+
 
     </main>
     <script src="scripts.js"></script>
