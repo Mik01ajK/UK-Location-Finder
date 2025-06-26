@@ -228,8 +228,18 @@ button#calculateButton:hover {
         max-width: 100%;
     }
     #mapContainer{
-        width:390px;
+        width:350px;
+        height: 500px;
+        border: solid 1px white;
     }    
+
+    .leaflet-right {
+        right:35% !important;
+    }
+
+    .leaflet-top .leaflet-control {
+    margin-top: 10px !important;
+}
 
 }
 
