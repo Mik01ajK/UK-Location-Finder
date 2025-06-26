@@ -203,7 +203,12 @@ button#calculateButton:hover {
 /* Add at the end of your styles.css */
 @media (max-width: 768px) {
     #mainContainer,
-    #bannerContainer,
+    #bannerContainer {
+        width: 90%;
+        max-width: 90%;
+        padding: 10px;
+        font-size: 16px;
+    }
     #jobRoleSelector {
         width: 100%;
         max-width: 100%;
@@ -228,7 +233,7 @@ button#calculateButton:hover {
         max-width: 100%;
     }
     #mapContainer{
-        width:350px;
+        width:320px;
         height: 500px;
         border: solid 1px white;
     }    
