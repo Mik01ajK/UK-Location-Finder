@@ -200,3 +200,36 @@ button#calculateButton:hover {
     color: white;
 }
 
+/* Add at the end of your styles.css */
+@media (max-width: 768px) {
+    #mainContainer,
+    #bannerContainer,
+    #jobRoleSelector {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #jobRoleContainer {
+        margin: 0 auto 20px auto;
+    }
+
+    #dualCont {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #averageSal, #maxHousePrice {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #ukMap {
+        max-width: 100%;
+    }
+    #mapContainer{
+        width:390px;
+    }    
+
+}
+

@@ -6,17 +6,23 @@
 
 
 
-
+let mapZoom = 6; // Default zoom for desktop
+let minMapZoom = 5.5; // Default minZoom for desktop
+if (window.innerWidth <= 768) {
+    mapZoom = 5;
+    minMapZoom = 5; // Lower zoom for mobile
+}
 
 //initialising Uk map
 var map = L.map('mapContainer', {
     center: [54.7, -2], // Center on Great Britain
-    zoom: 3, // Set initial zoom level
-    minZoom: 5.5, // Prevent zooming out too much
+    zoom: mapZoom, // Set initial zoom level
+    minZoom: minMapZoom, // Prevent zooming out too much
     maxZoom: 10, // Prevent zooming in
 
 
 });
+
 
 // Restrict to Great Britain (approximate bounding box)
 var gbBounds = [
