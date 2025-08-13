@@ -6,10 +6,7 @@
    - Commited the change
    - Swicthed back to main and merged my feature branch.
   
-pick a1b2c3 Add first change
-s d4e5f6 Add second change
-s g7h8i9 Add third change
-
+**2. Rebase & interactive Rebase**
    Created another feature branch which I will use for demo.
    - Made multiple small commits fixing typos
    - Used interactive rebase to squash the commits into one clean commit
@@ -22,9 +19,7 @@ s g7h8i9 Add third change
 
  - Finally I pushed the rebased branch so the commits have been added into the main branch
 
-pick a1b2c3 Add first change
-s d4e5f6 Add second change
-s g7h8i9 Add third change
+**3. Undo Mistakes & Reset**
 
    Created another new branch so I can display commits I made git checkout -b feature/day3-practice
    - I made a commit with a deliberate mistake in a txt file
