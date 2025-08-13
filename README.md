@@ -12,10 +12,10 @@
    - Used interactive rebase to squash the commits into one clean commit
   "git rebase -i HEAD~3" I used this code to open the text editor with the last 3 commits and I could choose what to do with each commit:
 
-//Changed the second and third "pick" to "s" (short for squash) which will then show one clean commit
-    pick a1b2c3 Add first change
-    s d4e5f6 Add second change
-    s g7h8i9 Add third change
+  Changed the second and third "pick" to "s" (short for squash) which will then show one clean commit
+   - pick a1b2c3 Add first change
+   - s d4e5f6 Add second change
+   - s g7h8i9 Add third change
 
  - Finally I pushed the rebased branch so the commits have been added into the main branch
 
