@@ -1,1 +1,1 @@
-Demo for demo branch for PDP Git fluency proof
+Text has now been fixed for the example
