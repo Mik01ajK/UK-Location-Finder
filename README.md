@@ -17,7 +17,7 @@
    - s d4e5f6 Add second change
    - s g7h8i9 Add third change
 
- - Finally I pushed the rebased branch so the commits have been added into the main branch
+   Finally I pushed the rebased branch so the commits have been added into the main branch
 
 **3. Undo Mistakes & Reset**
 
