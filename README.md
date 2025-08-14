@@ -4,7 +4,7 @@
    Created a new test Branch using git checkout -b feature/demo-branch
    - Made a small change in my code
    - Commited the change
-   - Swicthed back to main and merged my feature branch.
+   - Switched back to main and merged my feature branch.
   
 **2. Rebase & interactive Rebase**
    Created another feature branch which I will use for demo.
