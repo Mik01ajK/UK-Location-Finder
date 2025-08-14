@@ -25,5 +25,5 @@
    - I made a commit with a deliberate mistake in a txt file
    - Used git reset --soft HEAD~1 to undo the commit but keep changes staged
    - Fixed the mistake and commited properly
-   - Practiced using git reset --hard on a seperate file to discard any unwanted changes, this cannot be seen within the commmit history
+   - Practiced using git reset --hard on a seperate file to discard any unwanted changes, this cannot be seen within the commit history
 
