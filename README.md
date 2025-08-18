@@ -28,5 +28,7 @@
    - Practiced using git reset --hard on a seperate file to discard any unwanted changes, this cannot be seen within the commit history
 
 **4. Pull request**
-- test
+- Edited the readMe files to then be able pull the the changes into the main.
+- Then did a pull rebase which was difficult by making local changes through the console to the demo.txt file and also remote changes via github to the same file.
+- I then committed the changes and merged any changes that where clashing to then finally rebase the commit to the top of the commit chain, keeping it clean.
 
