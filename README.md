@@ -32,3 +32,7 @@
 - Then did a pull rebase which was difficult by making local changes through the console to the demo.txt file and also remote changes via github to the same file.
 - I then committed the changes and merged any changes that where clashing to then finally rebase the commit to the top of the commit chain, keeping it clean.
 
+**5. Stashing**
+- Learning how to stash uncomitted work for later
+- I stashed a change in my code so i could pull the most recent updates into the file.
+- After the pull I restored the stash and committed the work before merging the branch to the main.
