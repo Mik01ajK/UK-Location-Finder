@@ -1,0 +1,4 @@
+﻿Local change 1
+Local change 2
+Local change 4
+Local change stash test
