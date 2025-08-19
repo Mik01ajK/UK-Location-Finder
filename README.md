@@ -19,7 +19,7 @@
 
    Finally I pushed the rebased branch so the commits have been added into the main branch
 
-**3. Undo Mistakes & Reset**
+ **3. Undo Mistakes & Reset**
 
    Created another new branch so I can display commits I made git checkout -b feature/day3-practice
    - I made a commit with a deliberate mistake in a txt file
@@ -27,12 +27,17 @@
    - Fixed the mistake and commited properly
    - Practiced using git reset --hard on a seperate file to discard any unwanted changes, this cannot be seen within the commit history
 
-**4. Pull request**
-- Edited the readMe files to then be able pull the the changes into the main.
-- Then did a pull rebase which was difficult by making local changes through the console to the demo.txt file and also remote changes via github to the same file.
-- I then committed the changes and merged any changes that where clashing to then finally rebase the commit to the top of the commit chain, keeping it clean.
+ **4. Pull request**
+  - Edited the readMe files to then be able pull the the changes into the main.
+  - Then did a pull rebase which was difficult by making local changes through the console to the demo.txt file and also remote changes via github to the same file.
+  - I then committed the changes and merged any changes that where clashing to then finally rebase the commit to the top of the commit chain, keeping it clean.
 
-**5. Stashing**
-- Learning how to stash uncomitted work for later
-- I stashed a change in my code so i could pull the most recent updates into the file.
-- After the pull I restored the stash and committed the work before merging the branch to the main.
+ **5. Stashing**
+  - Learning how to stash uncomitted work for later
+  - I stashed a change in my code so i could pull the most recent updates into the file.
+  - After the pull I restored the stash and committed the work before merging the branch to the main.
+
+ **6. History & Recovery**
+  - Removing a file using rm, I removed demo.txt
+  - Then checked history using reflog.
+  - Using the recent commit hash I brought back the demo.txt file and committed it.
