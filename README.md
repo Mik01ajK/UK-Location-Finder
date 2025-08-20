@@ -41,3 +41,7 @@
   - Removing a file using rm, I removed demo.txt
   - Then checked history using reflog.
   - Using the recent commit hash I brought back the demo.txt file and committed it.
+
+ **7. Tags**
+  - Created a lightweight tag which points to my current commit.
+  - I then created an annotated tag
